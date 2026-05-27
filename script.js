@@ -1,31 +1,3 @@
-// ── Custom Cursor ──────────────────────────────────────────────
-const cursor   = document.getElementById('cursor');
-const follower = document.getElementById('follower');
-let mx = 0, my = 0, fx = 0, fy = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-});
-
-function animateFollower() {
-  fx += (mx - fx) * 0.12;
-  fy += (my - fy) * 0.12;
-  follower.style.transform = `translate(${fx - 18}px, ${fy - 18}px)`;
-  requestAnimationFrame(animateFollower);
-}
-animateFollower();
-
-document.querySelectorAll('a, button, .skill-pill, .project-card, .stat-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cursor.style.transform += ' scale(1.8)';
-    follower.style.opacity = '0.8';
-  });
-  el.addEventListener('mouseleave', () => {
-    follower.style.opacity = '0.5';
-  });
-});
-
 // ── Scroll Reveal ──────────────────────────────────────────────
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
